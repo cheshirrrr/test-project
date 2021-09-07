@@ -51,12 +51,10 @@ project {
             }
             accessKeyID = "AKIA5JH2VERVF6FH2TFT"
             param("teamcitySshKey", "private_key.pem")
-            param("storage.s3.cloudfront.keypair.id", "K15N40E4L8R788")
+            param("storage.s3.cloudfront.keypair.id", "K1JJNZ83P51MCW")
             param("storage.s3.cloudfront.domain", "d2207kp36y0r1u.cloudfront.net")
             param("storage.s3.cloudfront.enabled", "true")
             param("storage.s3.cloudfront.distribution", "EGSFHEAS0KG5C")
-            param("cloudfrontKeyPairSelect", "K15N40E4L8R788")
-            param("cloudfrontDistributionSelect", "EGSFHEAS0KG5C")
             param("projectId", "TestProject")
         }
     }
