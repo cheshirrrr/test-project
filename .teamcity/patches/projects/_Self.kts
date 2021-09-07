@@ -32,7 +32,7 @@ changeProject(DslContext.projectId) {
             }
         }
         feature1.apply {
-            cloudFrontPublicKeyId = "K15N40E4L8R788"
+            cloudFrontPublicKeyId = "K1JJNZ83P51MCW"
             param("storage.s3.cloudfront.keypair.id", "")
             param("aws.use.default.credential.provider.chain", "")
         }
