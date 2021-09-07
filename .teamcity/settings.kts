@@ -54,9 +54,7 @@ project {
                 awsRegionName = "eu-west-2"
             }
             accessKeyID = "AKIA5JH2VERVF6FH2TFT"
-            param("storage.s3.cloudfront.domain", "d2207kp36y0r1u.cloudfront.net")
             param("aws.use.default.credential.provider.chain", "")
-            param("projectId", "TestProject")
         }
     }
 }
