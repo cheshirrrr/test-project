@@ -48,7 +48,7 @@ project {
             cloudFrontEnabled = true
             cloudFrontDistribution = "EGSFHEAS0KG5C"
             cloudFrontPublicKeyId = "K15N40E4L8R788"
-            sshKey = "private_key.pem"
+            cloudFrontSshKey = "private_key.pem"
             accessKey = "credentialsJSON:92420876-353c-4fe1-90a0-9c3ce6b6fafe"
             awsEnvironment = default {
                 awsRegionName = "eu-west-2"
