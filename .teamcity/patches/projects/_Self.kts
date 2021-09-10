@@ -21,18 +21,18 @@ changeProject(DslContext.projectId) {
                 cloudFrontEnabled = true
                 cloudFrontDistribution = "EGSFHEAS0KG5C"
                 cloudFrontPublicKeyId = "K15N40E4L8R788"
-                cloudFrontSshKeyType = "PRIVATE_KEY_FILE"
+                cloudFrontSshKeyType = customKey {
+                    customKeyPath = "/test/test234"
+                    customKeyPassphrase = "passphrase"
+                }
                 accessKey = "credentialsJSON:92420876-353c-4fe1-90a0-9c3ce6b6fafe"
                 awsEnvironment = default {
                     awsRegionName = "eu-west-2"
                 }
                 accessKeyID = "AKIA5JH2VERVF6FH2TFT"
-                param("storage.s3.cloudfront.privateKey.passphrase", "passphrase")
-                param("storage.s3.cloudfront.privateKey.path", "/test/test234")
             }
         }
         feature1.apply {
-            param("storage.s3.cloudfront.privateKey.path", "/test/test23")
             param("aws.use.default.credential.provider.chain", "")
         }
     }
