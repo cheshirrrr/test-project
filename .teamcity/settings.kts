@@ -55,7 +55,7 @@ project {
             }
             accessKeyID = "AKIA5JH2VERVF6FH2TFT"
             param("storage.s3.cloudfront.privateKey.passphrase", "passphrase")
-            param("storage.s3.cloudfront.privateKey.path", "/test/test23")
+            param("storage.s3.cloudfront.privateKey.path", "/test/test234")
         }
     }
 }
