@@ -49,7 +49,7 @@ project {
             cloudFrontDistribution = "EGSFHEAS0KG5C"
             cloudFrontPublicKeyId = "K15N40E4L8R788"
             cloudFrontSshKeyType = customKey {
-                customKeyPath = "/test/test234"
+                customKeyPath = "/test/test23"
                 customKeyPassphrase = "68448343"
             }
             accessKey = "credentialsJSON:92420876-353c-4fe1-90a0-9c3ce6b6fafe"
