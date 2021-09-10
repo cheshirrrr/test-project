@@ -33,7 +33,11 @@ changeProject(DslContext.projectId) {
             }
         }
         feature1.apply {
+            param("teamcitySshKey", "private_key.pem")
+            param("storage.s3.cloudfront.privateKey.type", "TEAMCITY_SSH_KEY")
+            param("storage.s3.cloudfront.privateKey.passphrase", "")
             param("aws.use.default.credential.provider.chain", "")
+            param("storage.s3.cloudfront.privateKey.path", "")
         }
     }
 }
