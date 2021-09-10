@@ -48,15 +48,13 @@ project {
             cloudFrontEnabled = true
             cloudFrontDistribution = "EGSFHEAS0KG5C"
             cloudFrontPublicKeyId = "K15N40E4L8R788"
-            cloudFrontSshKeyType = customKey {
-                customKeyPath = "/test/test234"
-                customKeyPassphrase = "68448343"
-            }
+            cloudFrontSshKeyType = defaultKey()
             accessKey = "credentialsJSON:92420876-353c-4fe1-90a0-9c3ce6b6fafe"
             awsEnvironment = default {
                 awsRegionName = "eu-west-2"
             }
             accessKeyID = "AKIA5JH2VERVF6FH2TFT"
+            param("storage.s3.cloudfront.privateKey.passphrase", "68448343")
         }
     }
 }
