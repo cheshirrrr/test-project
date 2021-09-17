@@ -52,12 +52,12 @@ project {
             cloudFrontDistribution = "EGSFHEAS0KG5C"
             cloudFrontPublicKeyId = "K1QRK478AED4MH"
             cloudFrontSshKey = "protected.pem"
+            cloudFrontSshKeyPassphrase = "credentialsJSON:fef5c6f6-80d3-4adf-9b9f-be0d0e567510"
             accessKey = "credentialsJSON:92420876-353c-4fe1-90a0-9c3ce6b6fafe"
             awsEnvironment = default {
                 awsRegionName = "eu-west-2"
             }
             accessKeyID = "AKIA5JH2VERVF6FH2TFT"
-            param("storage.s3.cloudfront.privateKey.passphrase", "test123")
         }
     }
 }
