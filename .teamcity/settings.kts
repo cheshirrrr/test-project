@@ -49,7 +49,7 @@ project {
             bucketName = "artifacts.dkirkhmeier.nl"
             bucketPrefix = "settings"
             cloudFrontEnabled = true
-            cloudFrontDistribution = "EGSFHEAS0KG5C"
+            cloudFrontDistribution = "E3HNER7B77UH3Y"
             cloudFrontPublicKeyId = "K1QRK478AED4MH"
             cloudFrontSshKey = "protected.pem"
             cloudFrontSshKeyPassphrase = "credentialsJSON:fef5c6f6-80d3-4adf-9b9f-be0d0e567510"
