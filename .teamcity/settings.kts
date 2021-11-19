@@ -61,9 +61,9 @@ project {
             id = "PROJECT_EXT_9"
             storageName = "parentS3"
 //            bucketName = "artifacts.dkirkhmeier.nl"
-//            bucketPrefix = "settings"
-//            multipartThreshold = "8MB"
-//            multipartChunksize = "6MB"
+            bucketPrefix = "settings"
+            multipartThreshold = "8MB"
+            multipartChunksize = "6MB"
 //            cloudFrontEnabled = true
 //            cloudFrontDistribution = "ELP77HKIVPCH0"
 //            cloudFrontPublicKeyId = "K764NWNQODVAO"
