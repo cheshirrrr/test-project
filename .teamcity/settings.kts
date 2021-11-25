@@ -73,9 +73,6 @@ project {
                 awsRegionName = "eu-west-2"
             }
             accessKeyID = "AKIA5JH2VERVF6FH2TFT"
-            param("aws.use.default.credential.provider.chain", "")
-            param("cloudfrontKeyPairSelect", "K764NWNQODVAO")
-            param("cloudfrontDistributionSelect", "ELP77HKIVPCH0")
             param("storage.s3.acl", "BucketOwnerFullControl")
         }
     }
