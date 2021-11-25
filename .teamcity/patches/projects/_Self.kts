@@ -50,9 +50,9 @@ changeProject(DslContext.projectId) {
             }
         }
         feature2.apply {
+            param("aws.use.default.credential.provider.chain", "")
             param("cloudfrontKeyPairSelect", "K764NWNQODVAO")
             param("cloudfrontDistributionSelect", "ELP77HKIVPCH0")
-            param("aws.use.default.credential.provider.chain", "")
         }
     }
 }
