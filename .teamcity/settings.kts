@@ -62,6 +62,7 @@ project {
             storageName = "parentS3"
             bucketName = "artifacts.dkirkhmeier.nl"
             bucketPrefix = "settings"
+            acl = "BucketOwnerFullControl"
             multipartThreshold = "8MB"
             multipartChunksize = "6MB"
             cloudFrontEnabled = true
@@ -73,7 +74,6 @@ project {
                 awsRegionName = "eu-west-2"
             }
             accessKeyID = "AKIA5JH2VERVF6FH2TFT"
-            param("storage.s3.acl", "BucketOwnerFullControl")
         }
     }
 }
