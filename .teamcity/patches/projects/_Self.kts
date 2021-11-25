@@ -50,7 +50,6 @@ changeProject(DslContext.projectId) {
             }
         }
         feature2.apply {
-            cloudFrontEnabled = false
             param("cloudfrontKeyPairSelect", "K764NWNQODVAO")
             param("cloudfrontDistributionSelect", "ELP77HKIVPCH0")
             param("aws.use.default.credential.provider.chain", "")
