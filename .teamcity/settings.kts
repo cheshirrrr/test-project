@@ -40,7 +40,7 @@ project {
     buildType(Build1)
 
     params {
-        param("teamcity.internal.storage.s3.upload.numberOfRetries", "1")
+        param("teamcity.internal.storage.s3.upload.numberOfRetries", "10")
     }
 
     features {
