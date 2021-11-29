@@ -85,7 +85,6 @@ object Build : BuildType({
     artifactRules = """
         multiupload
         русский.txt
-        .gitignore => subfolder1/subfolder2
     """.trimIndent()
 
     vcs {
