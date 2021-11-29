@@ -40,6 +40,7 @@ project {
     buildType(Build1)
 
     params {
+        param("teamcity.internal.storage.s3.upload.retryDelayMs", "10")
         param("teamcity.internal.storage.s3.upload.numberOfRetries", "10")
     }
 
