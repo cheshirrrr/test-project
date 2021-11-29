@@ -94,6 +94,7 @@ object Build : BuildType({
 
     steps {
         script {
+            enabled = false
             scriptContent = """
                 mkdir %system.teamcity.build.tempDir%/artifacts
                 touch %system.teamcity.build.tempDir%/artifacts/artifact1.json
