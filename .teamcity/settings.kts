@@ -85,20 +85,7 @@ object Build : BuildType({
     artifactRules = """
         multiupload
         русский.txt
-        русский.txt => russian1
-        русский.txt => russian2
-        русский.txt => russian3
-        русский.txt => russian4
-        русский.txt => russian5
-        русский.txt => russian6
-        русский.txt => russian7
-        русский.txt => russian8
-        русский.txt => russian9
-        русский.txt => russian10
-        русский.txt => russian11
-        русский.txt => russian12
-        русский.txt => russian13
-        русский.txt => russian14
+        test/*
     """.trimIndent()
 
     vcs {
