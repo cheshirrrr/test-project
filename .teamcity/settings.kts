@@ -40,7 +40,8 @@ project {
     buildType(Build1)
 
     params {
-        param("teamcity.internal.storage.s3.upload.numberOfRetries", "1")
+        param("teamcity.internal.storage.s3.upload.retryDelayMs", "10")
+        param("teamcity.internal.storage.s3.upload.numberOfRetries", "10")
     }
 
     features {
@@ -60,32 +61,20 @@ project {
         s3Storage {
             id = "PROJECT_EXT_9"
             storageName = "parentS3"
-//            bucketName = "artifacts.dkirkhmeier.nl"
+            bucketName = "artifacts.dkirkhmeier.nl"
             bucketPrefix = "settings"
+            acl = "BucketOwnerFullControl"
             multipartThreshold = "8MB"
             multipartChunksize = "6MB"
-//            cloudFrontEnabled = true
-//            cloudFrontDistribution = "ELP77HKIVPCH0"
-//            cloudFrontPublicKeyId = "K764NWNQODVAO"
-//            cloudFrontPrivateKey = "credentialsJSON:d3ae9544-9757-4984-b158-826eb8728123"
-//            accessKey = "credentialsJSON:92420876-353c-4fe1-90a0-9c3ce6b6fafe"
-//            awsEnvironment = default {
-//                awsRegionName = "eu-west-2"
-//            }
-//            accessKeyID = "AKIA5JH2VERVF6FH2TFT"
-//            param("cloudfrontKeyPairSelect", "K764NWNQODVAO")
-//            param("cloudfrontDistributionSelect", "ELP77HKIVPCH0")
-            param("aws.credentials.type", "aws.access.keys")
-            param("aws.access.key.id", "AKIA5JH2VERVF6FH2TFT")
-            param("secure:aws.secret.access.key", "credentialsJSON:92420876-353c-4fe1-90a0-9c3ce6b6fafe")
-            param("aws.region.name", "eu-west-2")
-            param("storage.s3.bucket.name", "artifacts.dkirkhmeier.nl")
-            param("storage.s3.upload.presignedUrl.enabled", "true")
-            param("storage.s3.cloudfront.enabled", "true")
-            param("storage.s3.cloudfront.distribution", "ELP77HKIVPCH0")
-            param("storage.s3.cloudfront.publicKeyId", "K764NWNQODVAO")
-            param("secure:storage.s3.cloudfront.privateKey", "credentialsJSON:d3ae9544-9757-4984-b158-826eb8728123")
-            param("storage.s3.acl", "BucketOwnerFullControl")
+            cloudFrontEnabled = true
+            cloudFrontDistribution = "ELP77HKIVPCH0"
+            cloudFrontPublicKeyId = "K764NWNQODVAO"
+            cloudFrontPrivateKey = "credentialsJSON:d3ae9544-9757-4984-b158-826eb8728123"
+            accessKey = "credentialsJSON:92420876-353c-4fe1-90a0-9c3ce6b6fafe"
+            awsEnvironment = default {
+                awsRegionName = "eu-west-2"
+            }
+            accessKeyID = "AKIA5JH2VERVF6FH2TFT"
         }
     }
 }
@@ -96,7 +85,7 @@ object Build : BuildType({
     artifactRules = """
         multiupload
         русский.txt
-        .gitignore => subfolder1/subfolder2
+        test/*
     """.trimIndent()
 
     vcs {
@@ -105,6 +94,7 @@ object Build : BuildType({
 
     steps {
         script {
+            enabled = false
             scriptContent = """
                 mkdir %system.teamcity.build.tempDir%/artifacts
                 touch %system.teamcity.build.tempDir%/artifacts/artifact1.json
