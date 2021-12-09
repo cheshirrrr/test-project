@@ -85,6 +85,7 @@ object Build : BuildType({
     artifactRules = """
         multiupload
         русский.txt
+        test/*
     """.trimIndent()
 
     vcs {
