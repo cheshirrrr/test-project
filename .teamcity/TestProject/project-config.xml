@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2021.1/project-config.xsd">
+  <name>Settings Check</name>
+  <description>Tests settings DSL &amp; Kotlin</description>
+  <parameters>
+    <param name="teamcity.internal.storage.s3.upload.numberOfRetries" value="10" />
+    <param name="teamcity.internal.storage.s3.upload.retryDelayMs" value="10" />
+  </parameters>
+  <project-extensions>
+    <extension id="PROJECT_EXT_1" type="versionedSettings">
+      <parameters>
+        <param name="buildSettings" value="ALWAYS_USE_CURRENT" />
+        <param name="credentialsStorageType" value="credentialsJSON" />
+        <param name="enabled" value="true" />
+        <param name="rootId" value="Root_HttpsGithubComCheshirrrrTestProjectRefsHeadsMaster" />
+        <param name="showChanges" value="false" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_10" type="active_storage">
+      <parameters>
+        <param name="active.storage.feature.id" value="PROJECT_EXT_9" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_2" type="storage_settings">
+      <parameters>
+        <param name="bucket-name" value="dkirkhmeier-test" />
+        <param name="credentials.type" value="key" />
+        <param name="credentials.useSignedUrl" value="true" />
+        <param name="secure:access-key" value="credentialsJSON:92484592-b422-4bbd-a641-4e5350dbafa6" />
+        <param name="storage.name" value="google stoarge" />
+        <param name="storage.type" value="google-storage" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_9" type="storage_settings">
+      <parameters>
+        <param name="aws.access.key.id" value="AKIA5JH2VERVF6FH2TFT" />
+        <param name="aws.credentials.type" value="aws.access.keys" />
+        <param name="aws.environment" value="" />
+        <param name="aws.external.id" value="TeamCity-server-15df50e5-248b-44df-a96e-9892988d841d" />
+        <param name="aws.region.name" value="eu-west-2" />
+        <param name="aws.service.endpoint" value="" />
+        <param name="aws.use.default.credential.provider.chain" value="false" />
+        <param name="secure:aws.secret.access.key" value="credentialsJSON:92420876-353c-4fe1-90a0-9c3ce6b6fafe" />
+        <param name="secure:storage.s3.cloudfront.privateKey" value="credentialsJSON:d3ae9544-9757-4984-b158-826eb8728123" />
+        <param name="storage.name" value="parentS3" />
+        <param name="storage.s3.acl" value="BucketOwnerFullControl" />
+        <param name="storage.s3.bucket.name" value="artifacts.dkirkhmeier.nl" />
+        <param name="storage.s3.bucket.name.wasProvidedAsString" value="true" />
+        <param name="storage.s3.bucket.prefix" value="settings" />
+        <param name="storage.s3.cloudfront.distribution" value="ELP77HKIVPCH0" />
+        <param name="storage.s3.cloudfront.enabled" value="true" />
+        <param name="storage.s3.cloudfront.publicKeyId" value="K764NWNQODVAO" />
+        <param name="storage.s3.upload.multipart_chunksize" value="6MB" />
+        <param name="storage.s3.upload.multipart_threshold" value="8MB" />
+        <param name="storage.s3.upload.presignedUrl.enabled" value="true" />
+        <param name="storage.type" value="S3_storage" />
+      </parameters>
+    </extension>
+  </project-extensions>
+  <cleanup />
+</project>
+
