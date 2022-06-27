@@ -1,4 +1,5 @@
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildSteps.awsImageBuilderBuild
 import jetbrains.buildServer.configs.kotlin.buildSteps.exec
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.failureConditions.BuildFailureOnMetric
@@ -257,29 +258,28 @@ object ImageBuilderTest : BuildType({
     }
 
     steps {
-        step {
+        awsImageBuilderBuild {
             name = "Image builder step"
-            type = "awsImageBuilder"
-            param("aws.session.duration", "60")
-            param("aws.connection.id", "PROJECT_EXT_14")
-            param("cloud.aws.imagebuilder.base-ami", "ami-07327fcb59f303766")
-            param("cloud.aws.imagebuilder.custom.scripts.inline", """
+            packerVersion = "1.8.2"
+            baseAmi = "ami-07327fcb59f303766"
+            instanceType = "t2.micro"
+            subnetId = "subnet-54716f2c"
+            inlineScript = """
                 echo 'testing inline scripts'
                 echo 'testing second line'
                 echo 'testing third line'
-            """.trimIndent())
-            param("cloud.aws.imagebuilder.instance-type", "t2.micro")
-            param("cloud.aws.imageBuilder.packer.version", "1.8.2")
+            """.trimIndent()
+            tags = """
+                Name=aws image builder test
+                TestTag=testvalue
+                LongTag=long tag to test spaces
+            """.trimIndent()
+            chosenConnectionId = "PROJECT_EXT_14"
+            param("aws.session.duration", "60")
             param("custom_script_files_artifacts_selector", """
                 scripts/script1.sh
                 scripts/script2.sh
             """.trimIndent())
-            param("cloud.aws.imagebuilder.tags", """
-                Name=aws image builder test
-                TestTag=testvalue
-                LongTag=long tag to test spaces
-            """.trimIndent())
-            param("cloud.aws.imagebuilder.subnet-id", "subnet-54716f2c")
         }
         exec {
             name = "writing name"
