@@ -264,12 +264,13 @@ object ImageBuilderTest : BuildType({
             baseAmi = "ami-0ec0396b5769fd303"
             instanceType = "c4"
             subnetId = "subnet-54716f2c"
+            inlineScript = "echo 'test'"
             tags = """
                 name=Image builder test
                 longTag=long tag to check spaces
             """.trimIndent()
             chosenConnectionId = "PROJECT_EXT_14"
-            param("aws.session.duration", "60")
+            param("aws.session.duration", "15")
         }
         exec {
             name = "writing name"
