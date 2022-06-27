@@ -261,25 +261,15 @@ object ImageBuilderTest : BuildType({
         awsImageBuilderBuild {
             name = "Image builder step"
             packerVersion = "1.8.2"
-            baseAmi = "ami-07327fcb59f303766"
-            instanceType = "t2.micro"
+            baseAmi = "ami-0ec0396b5769fd303"
+            instanceType = "c4"
             subnetId = "subnet-54716f2c"
-            inlineScript = """
-                echo 'testing inline scripts'
-                echo 'testing second line'
-                echo 'testing third line'
-            """.trimIndent()
             tags = """
-                Name=aws image builder test
-                TestTag=testvalue
-                LongTag=long tag to test spaces
+                name=Image builder test
+                longTag=long tag to check spaces
             """.trimIndent()
             chosenConnectionId = "PROJECT_EXT_14"
-            param("aws.session.duration", "5")
-            param("custom_script_files_artifacts_selector", """
-                scripts/script1.sh
-                scripts/script2.sh
-            """.trimIndent())
+            param("aws.session.duration", "60")
         }
         exec {
             name = "writing name"
