@@ -261,7 +261,7 @@ object ImageBuilderTest : BuildType({
         awsImageBuilderBuild {
             name = "Image builder step"
             packerVersion = "1.8.2"
-            baseAmi = "ami-0ec0396b5769fd303"
+            baseAmi = "ami-0e0ac2e8dbe96d897"
             instanceType = "c4"
             subnetId = "subnet-54716f2c"
             scriptFiles = """
