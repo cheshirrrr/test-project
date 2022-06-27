@@ -264,6 +264,10 @@ object ImageBuilderTest : BuildType({
             baseAmi = "ami-0ec0396b5769fd303"
             instanceType = "c4"
             subnetId = "subnet-54716f2c"
+            scriptFiles = """
+                scripts/script1.sh
+                scripts/script2.sh
+            """.trimIndent()
             inlineScript = "echo 'test'"
             tags = """
                 name=Image builder test
