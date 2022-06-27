@@ -275,7 +275,7 @@ object ImageBuilderTest : BuildType({
                 LongTag=long tag to test spaces
             """.trimIndent()
             chosenConnectionId = "PROJECT_EXT_14"
-            param("aws.session.duration", "60")
+            param("aws.session.duration", "5")
             param("custom_script_files_artifacts_selector", """
                 scripts/script1.sh
                 scripts/script2.sh
