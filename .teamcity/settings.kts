@@ -288,14 +288,6 @@ object ImageBuilderTest : BuildType({
         vcs {
         }
     }
-
-    features {
-        feature {
-            type = "AWS_CREDS_TO_ENV_VARS"
-            param("aws.session.duration", "60")
-            param("aws.connection.id", "PROJECT_EXT_14")
-        }
-    }
 })
 
 object Symbol_Check : BuildType({
