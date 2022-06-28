@@ -262,7 +262,7 @@ object ImageBuilderTest : BuildType({
             name = "Image builder step"
             packerVersion = "1.8.2"
             baseAmi = "ami-0e0ac2e8dbe96d897"
-            instanceType = "c4"
+            instanceType = "t2.nano"
             subnetId = "subnet-54716f2c"
             scriptFiles = """
                 scripts/script1.sh
