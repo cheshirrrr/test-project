@@ -1,5 +1,4 @@
 import jetbrains.buildServer.configs.kotlin.*
-import jetbrains.buildServer.configs.kotlin.buildSteps.awsImageBuilderBuild
 import jetbrains.buildServer.configs.kotlin.buildSteps.exec
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.failureConditions.BuildFailureOnMetric
@@ -74,6 +73,8 @@ project {
             id = "PROJECT_EXT_20"
             bucketName = "artifacts.dkirkhmeier.nl"
             forceVirtualHostAddressing = true
+            multipartThreshold = "6MB"
+            multipartChunksize = "6MB"
             cloudFrontUploadDistribution = "E34KDQSW4MSP85"
             cloudFrontDownloadDistribution = "E1QH3Z0SETV7B4"
             cloudFrontPublicKeyId = "K1W03TAT02CMWL"
@@ -258,23 +259,25 @@ object ImageBuilderTest : BuildType({
     }
 
     steps {
-        awsImageBuilderBuild {
+        step {
             name = "Image builder step"
-            packerVersion = "1.8.2"
-            baseAmi = "ami-0e0ac2e8dbe96d897"
-            instanceType = "t2.nano"
-            subnetId = "subnet-54716f2c"
-            scriptFiles = """
+            type = "awsImageBuilder"
+            executionMode = BuildStep.ExecutionMode.DEFAULT
+            param("aws.session.duration", "15")
+            param("aws.connection.id", "PROJECT_EXT_14")
+            param("cloud.aws.imagebuilder.base-ami", "ami-0e0ac2e8dbe96d897")
+            param("cloud.aws.imagebuilder.custom.scripts.inline", "echo 'test'")
+            param("cloud.aws.imagebuilder.instance-type", "t2.nano")
+            param("cloud.aws.imageBuilder.packer.version", "1.8.2")
+            param("cloud.aws.imagebuilder.custom.scripts.files", """
                 scripts/script1.sh
                 scripts/script2.sh
-            """.trimIndent()
-            inlineScript = "echo 'test'"
-            tags = """
+            """.trimIndent())
+            param("cloud.aws.imagebuilder.tags", """
                 name=Image builder test
                 longTag=long tag to check spaces
-            """.trimIndent()
-            chosenConnectionId = "PROJECT_EXT_14"
-            chosenConnectionSessionDuration = "15"
+            """.trimIndent())
+            param("cloud.aws.imagebuilder.subnet-id", "subnet-54716f2c")
         }
         exec {
             name = "writing name"
