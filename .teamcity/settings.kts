@@ -167,7 +167,10 @@ project {
 object Build : BuildType({
     name = "Build"
 
-    artifactRules = "multiupload"
+    artifactRules = """
+        multiupload
+        русс#%кий.txt
+    """.trimIndent()
     publishArtifacts = PublishMode.SUCCESSFUL
 
     vcs {
