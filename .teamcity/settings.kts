@@ -1,5 +1,4 @@
 import jetbrains.buildServer.configs.kotlin.*
-import jetbrains.buildServer.configs.kotlin.buildSteps.awsImageBuilderBuild
 import jetbrains.buildServer.configs.kotlin.buildSteps.exec
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.failureConditions.BuildFailureOnMetric
@@ -51,15 +50,15 @@ project {
         feature {
             id = "PROJECT_EXT_14"
             type = "OAuthProvider"
-            param("aws.session.credentials_checkbox", "true")
-            param("secure:aws.secret.access.key", "credentialsJSON:92420876-353c-4fe1-90a0-9c3ce6b6fafe")
-            param("aws.session.credentials", "true")
+            param("awsStsEndpoint", "https://sts.eu-west-2.amazonaws.com")
+            param("awsSessionCredentials", "true")
+            param("awsSessionCredentials_checkbox", "true")
+            param("awsRegionName", "eu-west-2")
+            param("awsAccessKeyId", "AKI25JH2VERVF6FH2TFT")
             param("displayName", "Amazon Web Services")
-            param("aws.access.key.id", "AKIA5JH2VERVF6FH2TFT")
-            param("aws.credentials.type", "aws.access.keys")
-            param("aws.region.name", "eu-west-2")
-            param("aws.sts.endpoint", "https://sts.amazonaws.com")
+            param("awsCredentialsType", "awsAccessKeys")
             param("providerType", "AWS")
+            param("secure:awsSecretAccessKey", "credentialsJSON:73bfb4c6-5a32-4f6c-8f1f-103381445779")
         }
         feature {
             id = "PROJECT_EXT_2"
@@ -263,23 +262,24 @@ object ImageBuilderTest : BuildType({
     }
 
     steps {
-        awsImageBuilderBuild {
+        step {
             name = "Image builder step"
-            packerVersion = "1.8.2"
-            baseAmi = "ami-0e0ac2e8dbe96d897"
-            instanceType = "t2.nano"
-            subnetId = "subnet-54716f2c"
-            scriptFiles = """
+            type = "awsImageBuilder"
+            param("aws.session.duration", "1")
+            param("aws.connection.id", "PROJECT_EXT_14")
+            param("cloud.aws.imagebuilder.base-ami", "ami-0e0ac2e8dbe96d897")
+            param("cloud.aws.imagebuilder.custom.scripts.inline", "echo 'test'")
+            param("cloud.aws.imagebuilder.instance-type", "t2.nano")
+            param("cloud.aws.imageBuilder.packer.version", "1.8.2")
+            param("cloud.aws.imagebuilder.custom.scripts.files", """
                 scripts/script1.sh
                 scripts/script2.sh
-            """.trimIndent()
-            inlineScript = "echo 'test'"
-            tags = """
+            """.trimIndent())
+            param("cloud.aws.imagebuilder.tags", """
                 name=Image builder test
                 longTag=long tag to check spaces
-            """.trimIndent()
-            chosenConnectionId = "PROJECT_EXT_14"
-            chosenConnectionSessionDuration = "1"
+            """.trimIndent())
+            param("cloud.aws.imagebuilder.subnet-id", "subnet-54716f2c")
         }
         exec {
             name = "writing name"
