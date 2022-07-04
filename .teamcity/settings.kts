@@ -265,9 +265,9 @@ object ImageBuilderTest : BuildType({
         step {
             name = "Image builder step"
             type = "awsImageBuilder"
-            param("aws.session.duration", "1")
-            param("aws.connection.id", "PROJECT_EXT_14")
-            param("cloud.aws.imagebuilder.base-ami", "ami-0e0ac2e8dbe96d897")
+            param("awsSessionDuration", "60")
+            param("awsConnectionId", "PROJECT_EXT_14")
+            param("cloud.aws.imagebuilder.base-ami", "ami-0339455b66e82a8ca")
             param("cloud.aws.imagebuilder.custom.scripts.inline", "echo 'test'")
             param("cloud.aws.imagebuilder.instance-type", "t2.nano")
             param("cloud.aws.imageBuilder.packer.version", "1.8.2")
