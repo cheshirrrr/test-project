@@ -50,15 +50,15 @@ project {
         feature {
             id = "PROJECT_EXT_14"
             type = "OAuthProvider"
-            param("awsStsEndpoint", "https://sts.eu-west-2.amazonaws.com")
+            param("awsStsEndpoint", "https://sts.amazonaws.com")
             param("awsSessionCredentials", "true")
             param("awsSessionCredentials_checkbox", "true")
             param("awsRegionName", "eu-west-2")
-            param("awsAccessKeyId", "AKI25JH2VERVF6FH2TFT")
+            param("awsAccessKeyId", "AKIA5JH2VERVF6FH2TFT")
             param("displayName", "Amazon Web Services")
             param("awsCredentialsType", "awsAccessKeys")
             param("providerType", "AWS")
-            param("secure:awsSecretAccessKey", "credentialsJSON:73bfb4c6-5a32-4f6c-8f1f-103381445779")
+            param("secure:awsSecretAccessKey", "credentialsJSON:92420876-353c-4fe1-90a0-9c3ce6b6fafe")
         }
         feature {
             id = "PROJECT_EXT_2"
