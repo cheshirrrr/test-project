@@ -265,6 +265,7 @@ object ImageBuilderTest : BuildType({
         step {
             name = "Image builder step"
             type = "awsImageBuilder"
+            executionMode = BuildStep.ExecutionMode.DEFAULT
             param("awsSessionDuration", "60")
             param("awsConnectionId", "PROJECT_EXT_14")
             param("cloud.aws.imagebuilder.base-ami", "ami-0339455b66e82a8ca")
@@ -331,6 +332,7 @@ object Symbol_Check : BuildType({
             """.trimIndent()
         }
         script {
+            enabled = false
             scriptContent = """echo "##teamcity[remoteArtifact amiId='ami-05412f54c12b57971' type='awsImageBuilder' region='eu-west-2']""""
         }
         step {
