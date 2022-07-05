@@ -338,6 +338,7 @@ object Symbol_Check : BuildType({
         step {
             name = "docker test"
             type = "DockerCommand"
+            enabled = false
             executionMode = BuildStep.ExecutionMode.DEFAULT
             param("docker.command.type", "build")
             param("docker.image.namesAndTags", "registry.jetbrains.team/p/tc/docker/alpine-node:latest")
