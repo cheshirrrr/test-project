@@ -356,7 +356,6 @@ object Symbol_Check : BuildType({
         step {
             name = "docker push test"
             type = "DockerCommand"
-            enabled = false
             executionMode = BuildStep.ExecutionMode.DEFAULT
             param("docker.command.type", "push")
             param("docker.image.namesAndTags", "registry.jetbrains.team/p/tc/docker/alpine-node:latest")
