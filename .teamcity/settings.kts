@@ -276,7 +276,7 @@ object ImageBuilderTest : BuildType({
                 scripts/script2.sh
             """.trimIndent())
             param("cloud.aws.imagebuilder.tags", """
-                name=Image builder test
+                Name=Image builder test
                 longTag=long tag to check spaces
             """.trimIndent())
             param("cloud.aws.imagebuilder.subnet-id", "subnet-54716f2c")
