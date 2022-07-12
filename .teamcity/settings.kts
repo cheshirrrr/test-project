@@ -1,9 +1,12 @@
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildFeatures.dockerSupport
+import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.buildSteps.exec
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.failureConditions.BuildFailureOnMetric
 import jetbrains.buildServer.configs.kotlin.failureConditions.failOnMetricChange
 import jetbrains.buildServer.configs.kotlin.projectFeatures.activeStorage
+import jetbrains.buildServer.configs.kotlin.projectFeatures.dockerRegistry
 import jetbrains.buildServer.configs.kotlin.projectFeatures.s3Storage
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
@@ -97,14 +100,12 @@ project {
             param("container-name", "test")
             param("secure:account-key", "credentialsJSON:3e8fb3ce-b0da-4af9-b98e-00182144831b")
         }
-        feature {
+        dockerRegistry {
             id = "PROJECT_EXT_4"
-            type = "OAuthProvider"
-            param("secure:userPass", "credentialsJSON:b6afeacb-a1ee-499e-ab35-0556a5a91339")
-            param("displayName", "Space")
-            param("userName", "Dmitrii.Kirkhmeier")
-            param("providerType", "Docker")
-            param("repositoryUrl", "https://registry.jetbrains.team")
+            name = "Space"
+            url = "https://registry.jetbrains.team"
+            userName = "Dmitrii.Kirkhmeier"
+            password = "credentialsJSON:b6afeacb-a1ee-499e-ab35-0556a5a91339"
         }
         feature {
             id = "PROJECT_EXT_8"
@@ -335,32 +336,31 @@ object Symbol_Check : BuildType({
             enabled = false
             scriptContent = """echo "##teamcity[remoteArtifact amiId='ami-05412f54c12b57971' type='awsImageBuilder' region='eu-west-2']""""
         }
-        step {
+        dockerCommand {
             name = "docker test"
-            type = "DockerCommand"
             enabled = false
-            executionMode = BuildStep.ExecutionMode.DEFAULT
-            param("docker.command.type", "build")
-            param("docker.image.namesAndTags", "registry.jetbrains.team/p/tc/docker/alpine-node:latest")
-            param("dockerfile.source", "CONTENT")
-            param("dockerfile.content", """
-                # syntax=docker/dockerfile:1
-                FROM node:12-alpine
-                RUN apk add --no-cache python2 g++ make
-                WORKDIR /app
-                COPY . .
-                RUN yarn install --production
-                CMD ["node", "src/index.js"]
-                EXPOSE 3000
-            """.trimIndent())
+            commandType = build {
+                source = content {
+                    content = """
+                        # syntax=docker/dockerfile:1
+                        FROM node:12-alpine
+                        RUN apk add --no-cache python2 g++ make
+                        WORKDIR /app
+                        COPY . .
+                        RUN yarn install --production
+                        CMD ["node", "src/index.js"]
+                        EXPOSE 3000
+                    """.trimIndent()
+                }
+                namesAndTags = "registry.jetbrains.team/p/tc/docker/alpine-node:latest"
+            }
         }
-        step {
+        dockerCommand {
             name = "docker push test"
-            type = "DockerCommand"
-            executionMode = BuildStep.ExecutionMode.DEFAULT
-            param("docker.command.type", "push")
-            param("docker.image.namesAndTags", "registry.jetbrains.team/p/tc/docker/alpine-node:latest")
-            param("dockerfile.source", "PATH")
+            commandType = push {
+                namesAndTags = "registry.jetbrains.team/p/tc/docker/alpine-node:latest"
+                removeImageAfterPush = false
+            }
         }
     }
 
@@ -370,11 +370,11 @@ object Symbol_Check : BuildType({
     }
 
     features {
-        feature {
-            type = "DockerSupport"
-            param("loginCheckbox", "on")
-            param("login2registry", "PROJECT_EXT_4")
-            param("cleanupPushed", "true")
+        dockerSupport {
+            cleanupPushedImages = true
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_4"
+            }
         }
     }
 })
