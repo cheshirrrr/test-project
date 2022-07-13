@@ -129,8 +129,9 @@ project {
         s3Storage {
             id = "PROJECT_EXT_9"
             storageName = "parentS3"
-            bucketName = "dkirkhmeier-acceleration-test"
+            bucketName = "artifacts.dkirkhmeier.nl"
             bucketPrefix = "settings"
+            forceVirtualHostAddressing = true
             multipartThreshold = "100MB"
             multipartChunksize = "100MB"
             cloudFrontUploadDistribution = "EM90WXYV2J1VW"
