@@ -129,8 +129,9 @@ project {
         s3Storage {
             id = "PROJECT_EXT_9"
             storageName = "parentS3"
-            bucketName = "artifacts.dkirkhmeier.nl"
+            bucketName = "dkirkhmeier-acceleration-test"
             bucketPrefix = "settings"
+            forceVirtualHostAddressing = true
             multipartThreshold = "100MB"
             multipartChunksize = "100MB"
             cloudFrontUploadDistribution = "EM90WXYV2J1VW"
@@ -143,6 +144,7 @@ project {
             }
             accessKeyID = "AKIA5JH2VERVF6FH2TFT"
             accessKey = "credentialsJSON:92420876-353c-4fe1-90a0-9c3ce6b6fafe"
+            param("storage.s3.accelerateModeEnabled", "true")
         }
         feature {
             id = "google-1"
