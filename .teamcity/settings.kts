@@ -131,6 +131,7 @@ project {
             storageName = "parentS3"
             bucketName = "artifacts.dkirkhmeier.nl"
             bucketPrefix = "settings"
+            forceVirtualHostAddressing = true
             multipartThreshold = "100MB"
             multipartChunksize = "100MB"
             cloudFrontUploadDistribution = "EM90WXYV2J1VW"
