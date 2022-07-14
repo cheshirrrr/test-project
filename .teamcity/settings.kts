@@ -88,8 +88,8 @@ project {
             useDefaultCredentialProviderChain = true
         }
         activeStorage {
-            id = "PROJECT_EXT_23"
-            activeStorageID = "PROJECT_EXT_9"
+            id = "PROJECT_EXT_22"
+            activeStorageID = "PROJECT_EXT_20"
         }
         feature {
             id = "PROJECT_EXT_33"
