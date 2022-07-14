@@ -134,12 +134,12 @@ project {
             forceVirtualHostAddressing = true
             multipartThreshold = "100MB"
             multipartChunksize = "100MB"
+            cloudFrontEnabled = true
             cloudFrontUploadDistribution = "EM90WXYV2J1VW"
             cloudFrontDownloadDistribution = "E3OKYJUZRW4C51"
             cloudFrontPublicKeyId = "K1FL2MYX64DCXE"
             cloudFrontPrivateKey = "credentialsJSON:01ccd0f7-5067-4b8d-a384-029219063de8"
-            awsEnvironment = custom {
-                endpoint = "https://s3.eu-west-2.amazonaws.com/artifacts.dkirkhmeier.nl"
+            awsEnvironment = default {
                 awsRegionName = "eu-west-2"
             }
             accessKeyID = "AKIA5JH2VERVF6FH2TFT"
