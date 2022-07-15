@@ -86,6 +86,7 @@ project {
             awsEnvironment = default {
                 awsRegionName = "eu-west-2"
             }
+            useDefaultCredentialProviderChain = true
             accessKeyID = "AKIA5JH2VERVNEDTIC2M"
             accessKey = "credentialsJSON:4bfdbf1a-18df-4d24-9292-dd8da48da593"
         }
