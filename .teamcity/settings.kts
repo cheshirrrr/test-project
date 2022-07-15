@@ -78,10 +78,11 @@ project {
             forceVirtualHostAddressing = true
             multipartThreshold = "6MB"
             multipartChunksize = "6MB"
-            cloudFrontUploadDistribution = "E34KDQSW4MSP85"
-            cloudFrontDownloadDistribution = "E1QH3Z0SETV7B4"
-            cloudFrontPublicKeyId = "K1W03TAT02CMWL"
-            cloudFrontPrivateKey = "credentialsJSON:01e71ffd-59c8-4707-b685-5e1de272c7b6"
+            cloudFrontEnabled = true
+            cloudFrontUploadDistribution = "E3TUL82J6GQKBR"
+            cloudFrontDownloadDistribution = "E26W3X3SO9YMEZ"
+            cloudFrontPublicKeyId = "KW4EK93Z1LMQE"
+            cloudFrontPrivateKey = "credentialsJSON:8bbc6026-0be4-4a0a-ba8a-272fa03b0aa2"
             awsEnvironment = default {
                 awsRegionName = "eu-west-2"
             }
