@@ -302,13 +302,6 @@ object ImageBuilderTest : BuildType({
 object Symbol_Check : BuildType({
     name = "► Build 2"
 
-    artifactRules = """
-        test/package-1.2.3+git1234abc.noarch.rpm => text
-        multiupload => folder/sub1/sub2/sub3
-        test+test.txt
-        русс#%кий.txt => русскаяпапка/подпапка
-        lots/*
-    """.trimIndent()
     publishArtifacts = PublishMode.SUCCESSFUL
 
     vcs {
