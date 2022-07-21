@@ -74,11 +74,11 @@ project {
         }
         s3Storage {
             id = "PROJECT_EXT_20"
-            bucketName = "artifacts.dkirkhmeier.nl"
+            bucketName = "artifacts-dkirkhmeier-acceleration-test"
             forceVirtualHostAddressing = true
+            enableTransferAcceleration = true
             multipartThreshold = "6MB"
             multipartChunksize = "6MB"
-            cloudFrontEnabled = true
             cloudFrontUploadDistribution = "E3TUL82J6GQKBR"
             cloudFrontDownloadDistribution = "E26W3X3SO9YMEZ"
             cloudFrontPublicKeyId = "KW4EK93Z1LMQE"
