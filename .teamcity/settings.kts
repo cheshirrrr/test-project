@@ -86,9 +86,8 @@ project {
             awsEnvironment = default {
                 awsRegionName = "eu-west-2"
             }
-            useDefaultCredentialProviderChain = true
-            accessKeyID = "AKIA5JH2VERVNEDTIC2M"
-            accessKey = "credentialsJSON:4bfdbf1a-18df-4d24-9292-dd8da48da593"
+            accessKeyID = "AKIA5JH2VERVF6FH2TFT"
+            accessKey = "credentialsJSON:92420876-353c-4fe1-90a0-9c3ce6b6fafe"
         }
         activeStorage {
             id = "PROJECT_EXT_22"
@@ -270,7 +269,6 @@ object ImageBuilderTest : BuildType({
         step {
             name = "Image builder step"
             type = "awsImageBuilder"
-            executionMode = BuildStep.ExecutionMode.DEFAULT
             param("awsSessionDuration", "60")
             param("awsConnectionId", "PROJECT_EXT_14")
             param("cloud.aws.imagebuilder.base-ami", "ami-0339455b66e82a8ca")
