@@ -74,7 +74,7 @@ project {
         }
         s3Storage {
             id = "PROJECT_EXT_20"
-            bucketName = "artifacts-dkirkhmeier-acceleration-test"
+            bucketName = "artifacts-dkirkhmeier-nl"
             forceVirtualHostAddressing = true
             enableTransferAcceleration = true
             multipartThreshold = "6MB"
