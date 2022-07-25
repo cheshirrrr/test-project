@@ -76,6 +76,7 @@ project {
             id = "PROJECT_EXT_20"
             bucketName = "artifacts-dkirkhmeier-nl"
             forceVirtualHostAddressing = true
+            enableTransferAcceleration = true
             multipartThreshold = "6MB"
             multipartChunksize = "6MB"
             cloudFrontUploadDistribution = "E3TUL82J6GQKBR"
