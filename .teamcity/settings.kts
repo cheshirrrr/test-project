@@ -291,6 +291,10 @@ object ImageBuilderTest : BuildType({
             arguments = "%teamcity.build.awsImageBuilder.amiId%"
             param("script.content", """echo "1"""")
         }
+        script {
+            name = "sending amiartifact message"
+            scriptContent = """echo "1""""
+        }
     }
 
     triggers {
