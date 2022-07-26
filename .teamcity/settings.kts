@@ -266,6 +266,10 @@ object ImageBuilderTest : BuildType({
     }
 
     steps {
+        script {
+            name = "sending amiartifact message"
+            scriptContent = """echo "1""""
+        }
         step {
             name = "Image builder step"
             type = "awsImageBuilder"
@@ -290,10 +294,6 @@ object ImageBuilderTest : BuildType({
             path = "echo"
             arguments = "%teamcity.build.awsImageBuilder.amiId%"
             param("script.content", """echo "1"""")
-        }
-        script {
-            name = "sending amiartifact message"
-            scriptContent = """echo "1""""
         }
     }
 
