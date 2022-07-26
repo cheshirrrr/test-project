@@ -268,7 +268,10 @@ object ImageBuilderTest : BuildType({
     steps {
         script {
             name = "sending amiartifact message"
-            scriptContent = """echo "##teamcity[remoteArtifact amiId='ami-0857aa6981e97d02c' connectionId='PROJECT_EXT_14' type='AWS_AMI']""""
+            scriptContent = """
+                echo "##teamcity[publishArtifacts '%system.teamcity.build.tempDir%/artifacts/artifact1.json']"
+                echo "##teamcity[remoteArtifact amiId='ami-0857aa6981e97d02c' connectionId='PROJECT_EXT_14' type='AWS_AMI']"
+            """.trimIndent()
         }
         step {
             name = "Image builder step"
