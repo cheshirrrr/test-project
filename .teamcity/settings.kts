@@ -172,7 +172,7 @@ object Build : BuildType({
     name = "Build"
 
     artifactRules = """
-        multiupload
+        nonexistent.txt
         русс#%кий.txt
     """.trimIndent()
     publishArtifacts = PublishMode.SUCCESSFUL
@@ -269,7 +269,7 @@ object ImageBuilderTest : BuildType({
         script {
             name = "sending amiartifact message"
             scriptContent = """
-                echo "##teamcity[publishArtifacts '%system.teamcity.build.tempDir%/artifacts/artifact1.json']"
+                echo "##teamcity[buildStatisticValue key='someKey' value='443']"
                 echo "##teamcity[remoteArtifact amiId='ami-0857aa6981e97d02c' connectionId='PROJECT_EXT_14' type='AWS_AMI']"
             """.trimIndent()
         }
@@ -277,6 +277,7 @@ object ImageBuilderTest : BuildType({
             name = "Image builder step"
             type = "awsImageBuilder"
             enabled = false
+            executionMode = BuildStep.ExecutionMode.DEFAULT
             param("awsSessionDuration", "60")
             param("awsConnectionId", "PROJECT_EXT_14")
             param("cloud.aws.imagebuilder.base-ami", "ami-0339455b66e82a8ca")
