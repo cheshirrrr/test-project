@@ -294,7 +294,6 @@ object ImageBuilderTest : BuildType({
         }
         exec {
             name = "writing name"
-            enabled = false
             path = "echo"
             arguments = "%teamcity.build.awsImageBuilder.amiId%"
             param("script.content", """echo "1"""")
