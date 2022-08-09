@@ -268,6 +268,7 @@ object ImageBuilderTest : BuildType({
     steps {
         script {
             name = "sending amiartifact message"
+            enabled = false
             scriptContent = """
                 echo "##teamcity[buildStatisticValue key='someKey' value='443']"
                 echo "##teamcity[remoteArtifact amiId='ami-0857aa6981e97d02c' connectionId='PROJECT_EXT_14' type='AWS_AMI']"
