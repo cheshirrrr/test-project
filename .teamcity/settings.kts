@@ -276,8 +276,6 @@ object ImageBuilderTest : BuildType({
         step {
             name = "Image builder step"
             type = "awsImageBuilder"
-            enabled = false
-            executionMode = BuildStep.ExecutionMode.DEFAULT
             param("awsSessionDuration", "60")
             param("awsConnectionId", "PROJECT_EXT_14")
             param("cloud.aws.imagebuilder.base-ami", "ami-0339455b66e82a8ca")
