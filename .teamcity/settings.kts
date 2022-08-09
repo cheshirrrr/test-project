@@ -1,4 +1,6 @@
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.amazonEC2CloudImage
+import jetbrains.buildServer.configs.kotlin.amazonEC2CloudProfile
 import jetbrains.buildServer.configs.kotlin.buildFeatures.dockerSupport
 import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.buildSteps.exec
@@ -93,6 +95,17 @@ project {
             id = "PROJECT_EXT_22"
             activeStorageID = "PROJECT_EXT_20"
         }
+        amazonEC2CloudImage {
+            id = "PROJECT_EXT_23"
+            profileId = "amazon-1"
+            agentPoolId = "-2"
+            name = "test image"
+            instanceType = "t3.micro"
+            securityGroups = listOf("sg-40c23029")
+            customizeLaunchTemplate = false
+            launchTemplateCustomAmi = ""
+            source = Source("ami-0f3f1515d4ff9e09a")
+        }
         feature {
             id = "PROJECT_EXT_33"
             type = "storage_settings"
@@ -146,6 +159,16 @@ project {
             }
             accessKeyID = "AKIA5JH2VERVF6FH2TFT"
             accessKey = "credentialsJSON:92420876-353c-4fe1-90a0-9c3ce6b6fafe"
+        }
+        amazonEC2CloudProfile {
+            id = "amazon-1"
+            name = "second profile"
+            terminateIdleMinutes = 30
+            region = AmazonEC2CloudProfile.Regions.EU_WEST_LONDON
+            authType = accessKey {
+                keyId = "credentialsJSON:7a5d60ce-88ef-4004-8fc0-abc8b2caf77d"
+                secretKey = "credentialsJSON:92420876-353c-4fe1-90a0-9c3ce6b6fafe"
+            }
         }
         feature {
             id = "google-1"
