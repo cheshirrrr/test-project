@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2021.1/project-config.xsd">
+  <name>CloudFront Check</name>
+  <description>Tests settings DSL &amp; Kotlin</description>
+  <parameters>
+    <param name="storage.s3.acl" value="bucket-owner-read" />
+    <param name="teamcity.internal.storage.s3.upload.enableConsistencyCheck" value="true" />
+    <param name="teamcity.internal.storage.s3.upload.numberOfRetries" value="10" />
+    <param name="teamcity.internal.storage.s3.upload.retryDelayMs" value="10" />
+  </parameters>
+  <project-extensions>
+    <extension id="PROJECT_EXT_1" type="versionedSettings">
+      <parameters>
+        <param name="buildSettings" value="ALWAYS_USE_CURRENT" />
+        <param name="credentialsStorageType" value="credentialsJSON" />
+        <param name="enabled" value="true" />
+        <param name="rootId" value="CloudFrontCheck_HttpsGithubComCheshirrrrTestProjectRefsHeadsMaster" />
+        <param name="showChanges" value="false" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_14" type="OAuthProvider">
+      <parameters>
+        <param name="awsAccessKeyId" value="AKIA5JH2VERVF6FH2TFT" />
+        <param name="awsCredentialsType" value="awsAccessKeys" />
+        <param name="awsRegionName" value="eu-west-2" />
+        <param name="awsSessionCredentials" value="true" />
+        <param name="awsSessionCredentials_checkbox" value="true" />
+        <param name="awsStsEndpoint" value="https://sts.amazonaws.com" />
+        <param name="displayName" value="Amazon Web Services" />
+        <param name="providerType" value="AWS" />
+        <param name="secure:awsSecretAccessKey" value="credentialsJSON:92420876-353c-4fe1-90a0-9c3ce6b6fafe" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_2" type="storage_settings">
+      <parameters>
+        <param name="bucket-name" value="dkirkhmeier-test" />
+        <param name="credentials.type" value="key" />
+        <param name="credentials.useSignedUrl" value="true" />
+        <param name="secure:access-key" value="credentialsJSON:b9a1a66e-404a-4007-bffc-22b87f598249" />
+        <param name="storage.name" value="google stoarge" />
+        <param name="storage.type" value="google-storage" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_20" type="storage_settings">
+      <parameters>
+        <param name="aws.access.key.id" value="AKIA5JH2VERVF6FH2TFT" />
+        <param name="aws.credentials.type" value="aws.access.keys" />
+        <param name="aws.environment" value="" />
+        <param name="aws.external.id" value="TeamCity-server-15df50e5-248b-44df-a96e-9892988d841d" />
+        <param name="aws.region.name" value="eu-west-2" />
+        <param name="aws.service.endpoint" value="" />
+        <param name="secure:aws.secret.access.key" value="credentialsJSON:92420876-353c-4fe1-90a0-9c3ce6b6fafe" />
+        <param name="secure:storage.s3.cloudfront.privateKey" value="credentialsJSON:8bbc6026-0be4-4a0a-ba8a-272fa03b0aa2" />
+        <param name="storage.s3.bucket.name" value="artifacts-dkirkhmeier-nl" />
+        <param name="storage.s3.bucket.name.wasProvidedAsString" value="true" />
+        <param name="storage.s3.cloudfront.download.distribution" value="E26W3X3SO9YMEZ" />
+        <param name="storage.s3.cloudfront.publicKeyId" value="KW4EK93Z1LMQE" />
+        <param name="storage.s3.cloudfront.upload.distribution" value="E3TUL82J6GQKBR" />
+        <param name="storage.s3.forceVirtualHostAddressing" value="true" />
+        <param name="storage.s3.upload.multipart_chunksize" value="6MB" />
+        <param name="storage.s3.upload.multipart_threshold" value="6MB" />
+        <param name="storage.s3.upload.presignedUrl.enabled" value="true" />
+        <param name="storage.type" value="S3_storage" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_22" type="active_storage">
+      <parameters>
+        <param name="active.storage.feature.id" value="PROJECT_EXT_20" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_23" type="CloudImage">
+      <parameters>
+        <param name="agent_pool_id" value="-2" />
+        <param name="amazon-id" value="ami-0f3f1515d4ff9e09a" />
+        <param name="customize-launch-template" value="false" />
+        <param name="ebs-optimized" value="false" />
+        <param name="image-name-prefix" value="test image" />
+        <param name="instance-type" value="t3.micro" />
+        <param name="profileId" value="amazon-1" />
+        <param name="security-group-ids" value="sg-40c23029," />
+        <param name="source-id" value="test image" />
+        <param name="template-ami" value="" />
+        <param name="use-spot-instances" value="false" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_25" type="CloudImage">
+      <parameters>
+        <param name="agent_pool_id" value="-2" />
+        <param name="amazon-id" value="ami-0041a51065d2f1298" />
+        <param name="customize-launch-template" value="false" />
+        <param name="ebs-optimized" value="false" />
+        <param name="image-name-prefix" value="second image" />
+        <param name="instance-type" value="t2.micro" />
+        <param name="profileId" value="amazon-1" />
+        <param name="security-group-ids" value="sg-40c23029," />
+        <param name="source-id" value="second image" />
+        <param name="template-ami" value="" />
+        <param name="use-spot-instances" value="false" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_33" type="storage_settings">
+      <parameters>
+        <param name="account-name" value="dkirkhmeiertest" />
+        <param name="container-name" value="test" />
+        <param name="secure:account-key" value="credentialsJSON:3e8fb3ce-b0da-4af9-b98e-00182144831b" />
+        <param name="storage.name" value="dkirkhmeier-test" />
+        <param name="storage.type" value="azure-storage" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_4" type="OAuthProvider">
+      <parameters>
+        <param name="displayName" value="Space" />
+        <param name="providerType" value="Docker" />
+        <param name="repositoryUrl" value="https://registry.jetbrains.team" />
+        <param name="secure:userPass" value="credentialsJSON:b6afeacb-a1ee-499e-ab35-0556a5a91339" />
+        <param name="userName" value="Dmitrii.Kirkhmeier" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_8" type="CloudImage">
+      <parameters>
+        <param name="agent_pool_id" value="-2" />
+        <param name="diskSizeGb" value="" />
+        <param name="growingId" value="false" />
+        <param name="imageType" value="Image" />
+        <param name="machineCustom" value="false" />
+        <param name="machineType" value="c2-standard-4" />
+        <param name="maxInstances" value="1" />
+        <param name="network" value="shared-vpc" />
+        <param name="preemptible" value="false" />
+        <param name="profileId" value="google-1" />
+        <param name="source-id" value="teamcity-it-agent-1640177592" />
+        <param name="sourceImage" value="teamcity-it-agent-1640177592" />
+        <param name="sourceProject" value="teamcity-buildserver-agents" />
+        <param name="subnet" value="teamcity-it" />
+        <param name="zone" value="europe-north1-a" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_9" type="storage_settings">
+      <parameters>
+        <param name="aws.access.key.id" value="AKIA5JH2VERVF6FH2TFT" />
+        <param name="aws.credentials.type" value="aws.access.keys" />
+        <param name="aws.environment" value="" />
+        <param name="aws.external.id" value="TeamCity-server-15df50e5-248b-44df-a96e-9892988d841d" />
+        <param name="aws.region.name" value="eu-west-2" />
+        <param name="aws.service.endpoint" value="" />
+        <param name="aws.use.default.credential.provider.chain" value="false" />
+        <param name="secure:aws.secret.access.key" value="credentialsJSON:92420876-353c-4fe1-90a0-9c3ce6b6fafe" />
+        <param name="secure:storage.s3.cloudfront.privateKey" value="credentialsJSON:01ccd0f7-5067-4b8d-a384-029219063de8" />
+        <param name="storage.name" value="parentS3" />
+        <param name="storage.s3.bucket.name" value="artifacts.dkirkhmeier.nl" />
+        <param name="storage.s3.bucket.name.wasProvidedAsString" value="true" />
+        <param name="storage.s3.bucket.prefix" value="settings" />
+        <param name="storage.s3.cloudfront.download.distribution" value="E3OKYJUZRW4C51" />
+        <param name="storage.s3.cloudfront.enabled" value="true" />
+        <param name="storage.s3.cloudfront.publicKeyId" value="K1FL2MYX64DCXE" />
+        <param name="storage.s3.cloudfront.upload.distribution" value="EM90WXYV2J1VW" />
+        <param name="storage.s3.forceVirtualHostAddressing" value="true" />
+        <param name="storage.s3.upload.multipart_chunksize" value="100MB" />
+        <param name="storage.s3.upload.multipart_threshold" value="100MB" />
+        <param name="storage.s3.upload.presignedUrl.enabled" value="true" />
+        <param name="storage.type" value="S3_storage" />
+      </parameters>
+    </extension>
+    <extension id="amazon-1" type="CloudProfile">
+      <parameters>
+        <param name="cloud-code" value="amazon" />
+        <param name="description" value="" />
+        <param name="enabled" value="true" />
+        <param name="max-running-instances" value="" />
+        <param name="name" value="second profile" />
+        <param name="next-hour" value="" />
+        <param name="not-checked" value="" />
+        <param name="profileId" value="amazon-1" />
+        <param name="profileServerUrl" value="" />
+        <param name="region" value="eu-west-2" />
+        <param name="secure:access-id" value="credentialsJSON:7a5d60ce-88ef-4004-8fc0-abc8b2caf77d" />
+        <param name="secure:secret-key" value="credentialsJSON:92420876-353c-4fe1-90a0-9c3ce6b6fafe" />
+        <param name="system.cloud.profile_id" value="amazon-1" />
+        <param name="terminate-idle-time" value="30" />
+        <param name="total-work-time" value="" />
+      </parameters>
+    </extension>
+    <extension id="google-1" type="CloudProfile">
+      <parameters>
+        <param name="cloud-code" value="google" />
+        <param name="credentialsType" value="key" />
+        <param name="description" value="" />
+        <param name="enabled" value="true" />
+        <param name="name" value="network test" />
+        <param name="next-hour" value="" />
+        <param name="profileId" value="google-1" />
+        <param name="profileServerUrl" value="" />
+        <param name="secure:accessKey" value="credentialsJSON:fa163c00-e19b-4933-8242-161708d7b03c" />
+        <param name="system.cloud.profile_id" value="google-1" />
+        <param name="terminate-idle-time" value="30" />
+        <param name="total-work-time" value="" />
+      </parameters>
+    </extension>
+  </project-extensions>
+  <cleanup />
+</project>
+

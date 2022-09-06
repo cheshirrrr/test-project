@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2021.1/project-config.xsd">
+  <name>Build</name>
+  <description />
+  <settings>
+    <options>
+      <option name="artifactRules" value="nonexistent2.txt&#xA;русс#%кий.txt" />
+      <option name="publishArtifactCondition" value="SUCCESSFUL" />
+    </options>
+    <disabled-settings>
+      <setting-ref ref="BUILD_EXT_1" />
+      <setting-ref ref="RUNNER_1" />
+    </disabled-settings>
+    <parameters />
+    <build-runners>
+      <runner id="RUNNER_1" name="" type="simpleRunner">
+        <parameters>
+          <param name="script.content"><![CDATA[mkdir %system.teamcity.build.tempDir%/artifacts
+touch %system.teamcity.build.tempDir%/artifacts/artifact1.json
+echo "##teamcity[publishArtifacts '%system.teamcity.build.tempDir%/artifacts/artifact1.json']"]]></param>
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_2" name="" type="simpleRunner">
+        <parameters>
+          <param name="script.content"><![CDATA[mkfile -n 20m %system.teamcity.build.tempDir%/big_file
+mkfile -n 5k test+test.txt
+mkdir lots
+cd lots
+touch file{001..005}
+#touch "dmg-JetBrains.Rider-2022.2-EAP1D-222.1591.55.Checked-aarch64.dmg.log"
+#echo "##teamcity[publishArtifacts '%system.teamcity.build.checkoutDir%/lots/dmg-JetBrains.Rider-2022.2-EAP1D-222.1591.55.Checked-aarch64.dmg.log=>macos-logs']"]]></param>
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="SshGitGitJetbrainsTeamTeamcityTestProjectTestProjectGit" />
+    </vcs-settings>
+    <requirements />
+    <build-triggers>
+      <build-trigger id="TRIGGER_1" type="vcsTrigger">
+        <parameters>
+          <param name="branchFilter" value="+:*" />
+          <param name="enableQueueOptimization" value="true" />
+          <param name="quietPeriodMode" value="DO_NOT_USE" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <build-extensions>
+      <extension id="BUILD_EXT_1" type="BuildFailureOnMetric">
+        <parameters>
+          <param name="anchorBuild" value="lastSuccessful" />
+          <param name="metricKey" value="VisibleArtifactsSize" />
+          <param name="metricThreshold" value="10" />
+          <param name="metricUnits" value="metricUnitsPercents" />
+          <param name="moreOrLess" value="different" />
+          <param name="withBuildAnchor" value="true" />
+        </parameters>
+      </extension>
+    </build-extensions>
+    <cleanup />
+  </settings>
+</build-type>
+
